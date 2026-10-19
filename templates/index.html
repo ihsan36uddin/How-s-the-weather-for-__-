@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How's the weather for __?</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="icon" type="image/jpeg" href="/static/images/weather_icon.jpg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head> 
+ 
+<body>  
+    <div class="app-card" {% if score is not none %}expanded{% endif %}>
+        <h1> How's the weather for __?</h1>
+
+        <form class="location-form" method="POST">
+            <label for="city">City:</label>
+            <input type="text" id="city" name="location" placeholder="Paris">
+            <button>
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
+        </form>
+
+        <div class="results-card">
+        {% if score is not none %}
+            <h2>Football Suitablity score</h2>
+            <p class="score">{{score}}/100</p>
+        {% endif %}
+
+        </div>
+    </div>
+    {% if score is not none %}
+    <button class="reset">
+        <a href="/">Clear</a>
+    </button>
+    {% endif %}
+
+    <footer>
+        <p>Data from <a class="source-link" href="https://open-meteo.com/">open-meteo.com</a></p>
+    </footer>
+</body>
+</html>

@@ -1,41 +1,44 @@
 import requests
 
-country = input("Enter a country: ")
-city = input("Enter a city: ")
+def geocoding(location):
+    url = "https://geocoding-api.open-meteo.com/v1/search"
+    params = {
+    "name": location
+    }
+    response = requests.get(url, params=params)
+    data = response.json()
+    latitude = data["results"][0]["latitude"] 
+    longitude = data["results"][0]["longitude"]
+    return latitude, longitude 
 
-url = "https://geocoding-api.open-meteo.com/v1/search"
+def get_weather(latitude, longitude):
+    url2 = "https://api.open-meteo.com/v1/forecast"
+    weather_params = {
+        "latitude": latitude,
+        "longitude": longitude,
+        "wind_speed_unit": "mph",
+        "current": "temperature_2m,relative_humidity_2m,is_day,rain,snowfall,wind_speed_10m"
+    }
+    weather_response = requests.get(url2, params=weather_params)
+    weather_data = weather_response.json()
 
-params = {
-    "name": f"{city},{country}"
-}
+    rain = weather_data["current"]["rain"]
+    humidity = weather_data["current"]["relative_humidity_2m"]
+    snow = weather_data["current"]["snowfall"]
+    temperature = weather_data["current"]["temperature_2m"]
+    wind_speed = weather_data["current"]["wind_speed_10m"]
+    is_day = weather_data["current"]["is_day"]
 
-response = requests.get(url, params=params)
-data = response.json()
+    return{
+        "rain": rain,
+        "humidity": humidity,
+        "snow": snow,
+        "temperature": temperature,
+        "wind_speed": wind_speed,
+        "is_day": is_day
+    }
 
-latitude = data["results"][0]["latitude"]
-longitude = data["results"][0]["longitude"]
-
-url2 = "https://api.open-meteo.com/v1/forecast"
-weather_params = {
-    "latitude": latitude,
-    "longitude": longitude,
-    "wind_speed_unit": "mph",
-    "current": "temperature_2m,relative_humidity_2m,is_day,weather_code,cloud_cover,pressure_msl,precipitation,rain,showers,snowfall,wind_speed_10m,wind_gusts_10m"
-}
-weather_response = requests.get(url2, params=weather_params)
-weather_data = weather_response.json()
-
-cloud_cover = weather_data["current"]["cloud_cover"]
-precipitation = weather_data["current"]["precipitation"]
-rain = weather_data["current"]["rain"]
-humidity = weather_data["current"]["relative_humidity_2m"]
-snow = weather_data["current"]["snowfall"]
-temperature = weather_data["current"]["temperature_2m"]
-wind_gusts = weather_data["current"]["wind_gusts_10m"]
-wind_speed = weather_data["current"]["wind_speed_10m"]
-is_day = weather_data["current"]["is_day"]
-
-def calculate_football_score(rain, humidity, snow, temp, speed, day):
+def calculate_football_score(rain, humidity, snow, temp, speed):
     if rain < 0.6:
         rain_score = 10
     elif rain < 2.5:
@@ -81,7 +84,6 @@ def calculate_football_score(rain, humidity, snow, temp, speed, day):
 
     return (rain_score + humidity_score + snow_score + temp_score + wind_score) * 2
 
-print(calculate_football_score(rain, humidity, snow, temperature, wind_speed, is_day))
 
 
 # 'current_units': {'cloud_cover': '%',
