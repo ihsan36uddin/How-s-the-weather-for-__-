@@ -32,13 +32,29 @@ h1 {
 
 }
 
-.reset{
-    display: block;
+.reset-button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    
     width: fit-content;
     margin: 20px auto 0;
+    
+    color: #E2E8F0;
+    text-decoration: none;
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+
+    transition: color 0.2s ease;
+}
+
+.reset-button {
+    color: white;
 }
 .app-card.expanded {
-    min-height: 500px;
+    min-height: 400px;
 
 }
 
@@ -84,13 +100,38 @@ h1 {
 .results-card h2, .score{
     display: flex;
     justify-content: center;
-    align-items: center
+    align-items: center;
 }
+
+.results-card .score{
+    font-family: 'Inter', sans-serif;
+    font-size: 28px;
+    font-weight: 500
+}
+
+.weather-details {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    text-align: center;
+}
+
+.weather-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+.temperature p{
+    margin: 0;
+}
+
 .source-link {
     color:rgb(241, 4, 197);
     text-decoration: none;
     font-family:'Inter', sans-serif;
 }
+
 
 footer {
     font-family: 'Inter', sans-serif;
