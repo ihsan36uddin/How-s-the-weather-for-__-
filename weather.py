@@ -84,6 +84,24 @@ def calculate_football_score(rain, humidity, snow, temp, speed):
 
     return (rain_score + humidity_score + snow_score + temp_score + wind_score) * 2
 
+def get_verdict(score, sport):
+    if 90 <= score <= 100:
+        verdict = f"Excellent conditions for {sport}"
+    elif 80 <= score < 90:
+        verdict = f"Great conditions for {sport}"
+    elif 70 <= score < 80: 
+        verdict = f"Good conditions for {sport}"
+    elif 60 <= score < 70:
+        verdict = f"Tolerable conditions for {sport}"
+    elif 50 <= score < 60:
+        verdict = f"Not the greatest conditions for {sport}"
+    elif 40 <= score < 50:
+        verdict = f"Bad conditions for {sport}"
+    else:
+        verdict = f"Terrible conditions for {sport}"
+    return verdict 
+
+
 
 
 # 'current_units': {'cloud_cover': '%',

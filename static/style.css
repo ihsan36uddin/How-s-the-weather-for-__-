@@ -13,8 +13,17 @@ body {
 
 
 
-h1 {
+body .project-name {
     text-align: center;
+    color: black;
+    font-family: 'Inter', sans-serif;
+    position: absolute;
+    top: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    
+    margin: 0;
+    
 }
 
 .app-card {
@@ -54,7 +63,7 @@ h1 {
     color: white;
 }
 .app-card.expanded {
-    min-height: 400px;
+    min-height: 300px;
 
 }
 
@@ -107,6 +116,14 @@ h1 {
     font-family: 'Inter', sans-serif;
     font-size: 28px;
     font-weight: 500
+}
+
+.results-card .verdict{
+    font-family: 'Inter', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
 }
 
 .weather-details {
