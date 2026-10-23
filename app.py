@@ -8,22 +8,30 @@ def home():
     weather = None
     verdict = None
     chosen_loc = None
+    input_error = False
     if request.method == "POST":
         chosen_loc = request.form.get("location")
-        latitude, longitude = geocoding(chosen_loc)
-
-        weather = get_weather(latitude, longitude)
-        score = calculate_football_score(
+        try:
+            latitude, longitude = geocoding(chosen_loc)
+            weather = get_weather(latitude, longitude)
+            score = calculate_football_score(
             weather["rain"],
             weather["humidity"],
             weather["snow"],
             weather["temperature"],
             weather["wind_speed"],
+            )
+            verdict = get_verdict(score, "football")
+        except ValueError:
+            input_error = True 
 
-        )
-        verdict = get_verdict(score, "football")
-
-    return render_template("index.html", score=score, weather=weather, verdict=verdict, location=chosen_loc)
+    return render_template("index.html", score=score, 
+                           weather=weather, 
+                           verdict=verdict, 
+                           location=chosen_loc,
+                           input_error=input_error,
+                           
+                           )
 
 if __name__ == "__main__":
     app.run(port=5001, debug=True)

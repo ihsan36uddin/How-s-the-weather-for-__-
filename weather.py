@@ -7,9 +7,12 @@ def geocoding(location):
     }
     response = requests.get(url, params=params)
     data = response.json()
-    latitude = data["results"][0]["latitude"] 
-    longitude = data["results"][0]["longitude"]
-    return latitude, longitude 
+    if data.get("results"):
+        latitude = data["results"][0]["latitude"] 
+        longitude = data["results"][0]["longitude"]
+        return latitude, longitude 
+    else:
+        raise ValueError("City not found")
 
 def get_weather(latitude, longitude):
     url2 = "https://api.open-meteo.com/v1/forecast"
