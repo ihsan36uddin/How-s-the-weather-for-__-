@@ -93,6 +93,25 @@ body .project-name {
 
 }
 
+.location-form select {
+    appearance: none;
+    background: rgba(255, 255, 255, 0.12);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    border-radius: 12px;
+    padding: 14px 38px 14px 16px;
+    font-family: inherit;
+    font-size: 15px;
+    cursor: pointer;
+
+
+    text-align-last: center;
+    padding-right: 29px;
+    direction: rtl;
+
+
+}
+
 .location-form button {
     padding: 10px 14px;
     border-radius: 8px;
@@ -126,13 +145,13 @@ body .project-name {
 
 }
 
-.city-not-found{
+.error-message{
     font-size: 14px;
     font-weight: 500;
     margin-top: 20px;
     margin-bottom: -5px;
     text-align: center;
-    color: #9d048b
+    color: rgb(162, 4, 133);
 }
 
 .weather-details {
@@ -158,6 +177,23 @@ body .project-name {
 .weather-item p{
     margin: 0;
 }
+
+
+.dropdown button{
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+
+}
+
+.dropdown p{
+    display: block;
+    color: white;
+    
+}
+
+
 
 .source-link {
     color:rgb(241, 4, 197);

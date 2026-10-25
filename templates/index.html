@@ -20,6 +20,15 @@
         <form class="location-form" method="POST">
             <label for="city">City:</label>
             <input type="text" id="city" value="{{location or ''}}" name="location" placeholder="Paris">
+
+            <select name="activity">
+                <option value="Football">Football</option>
+                <option value="Running">Running</option>
+                <option value="Golf">Golf</option>
+                <option value="Basketball">Basketball</option>
+                <option value="Skiing">Skiing</option>
+            </select>
+
             <button>
                 <i class="fa-solid fa-magnifying-glass"></i>
             </button>
@@ -27,13 +36,18 @@
 
         <div class="results-card">
         {% if input_error %}
-            <p class="city-not-found">
+            <p class="error-message">
                 <i class="fa-solid fa-circle-exclamation"></i>
                 City not found. Please try again.
             </p>
-        {% else %}
-            {% if score is not none%}
-                <h2>Football Suitablity score</h2>
+        {% elif api_error %}
+            <p class="error-message">
+                <i class="fa-solid fa-droplet-slash"></i>
+                Unable to retrieve weather information. Please try again.
+            </p>
+        {% endif %}
+            {% if score is not none %}
+                <h2>{{activity}} Suitablity score</h2>
                 <p class="score">{{score}}/100</p>
                 <hr>
                 <div class="weather-details">
@@ -60,11 +74,9 @@
                 </div>
                 
             {% endif %}
-        {% endif %}
-
         </div>
     </div>
-    {% if score is not none or input_error %}
+    {% if score is not none or input_error or api_error %}
         <a href="/" class="reset-button">
             <i class="fa-solid fa-rotate-left"></i>
             Clear
