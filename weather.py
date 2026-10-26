@@ -43,51 +43,67 @@ def get_weather(latitude, longitude):
         "is_day": is_day
     }
 
+
 def calculate_football_score(rain, humidity, snow, temp, speed):
-    if rain < 0.6:
-        rain_score = 10
-    elif rain < 2.5:
+
+    # Rainfall (maximum 25 points)
+    if rain == 0:
+        rain_score = 25
+    elif rain < 0.5:
+        rain_score = 20
+    elif rain < 2:
+        rain_score = 15
+    elif rain < 5:
         rain_score = 5
     else:
         rain_score = 0
 
-    if humidity < 40:
+    # Humidity (maximum 10 points)
+    if 30 <= humidity <= 60:
         humidity_score = 10
-    elif humidity < 60:
+    elif humidity < 75:
         humidity_score = 7
-    elif humidity < 70:
-        humidity_score = 5
+    elif humidity < 85:
+        humidity_score = 3
     else:
         humidity_score = 0
-    
-    if snow < 0.3:
+
+    # Snowfall (maximum 15 points)
+    if snow == 0:
+        snow_score = 15
+    elif snow < 0.5:
         snow_score = 10
-    elif snow < 0.6:
-        snow_score = 7
-    elif snow < 2.5:
+    elif snow < 2:
         snow_score = 5
     else:
-        snow_score = 0 
+        snow_score = 0
 
-    if 10 <= temp <= 20:
-        temp_score = 10
-    elif 20 < temp <= 25:
-        temp_score = 7
-    elif 5 <= temp <= 10:
+    # Temperature (maximum 30 points)
+    if 10 <= temp <= 18:
+        temp_score = 30
+    elif 5 <= temp < 10 or 18 < temp <= 23:
+        temp_score = 25
+    elif 0 <= temp < 5 or 23 < temp <= 28:
+        temp_score = 15
+    elif -5 <= temp < 0 or 28 < temp <= 32:
         temp_score = 5
     else:
         temp_score = 0
 
-    if speed < 10:
-        wind_score = 10
+    # Wind speed in mph (maximum 20 points)
+    if speed < 5:
+        wind_score = 20
+    elif speed < 10:
+        wind_score = 17
     elif speed < 15:
-        wind_score = 7
-    elif speed < 20:
+        wind_score = 12
+    elif speed < 25:
         wind_score = 5
     else:
         wind_score = 0
 
-    return (rain_score + humidity_score + snow_score + temp_score + wind_score) * 2
+    return rain_score + humidity_score + snow_score + temp_score + wind_score
+
 
 
 def calculate_running_score(rain, humidity, snow, temp, speed):

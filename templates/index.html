@@ -12,7 +12,20 @@
  
 <body>  
     <h1 class="project-name"> 
-        How's the weather for __?
+        How's the weather for 
+
+        <span class="word-window">
+            <span class="word-track">
+                <span>football?</span>
+                <span>running?</span>
+                <span>golf?</span>
+                <span>basketball?</span>
+                <span>skiing?</span>
+                <span>football?</span>
+
+            </span>
+
+        </span>
 
     </h1>
     <div class="app-card {% if score is not none %}expanded{% endif %}">
@@ -22,11 +35,11 @@
             <input type="text" id="city" value="{{location or ''}}" name="location" placeholder="Paris">
 
             <select name="activity">
-                <option value="Football">Football</option>
-                <option value="Running">Running</option>
-                <option value="Golf">Golf</option>
-                <option value="Basketball">Basketball</option>
-                <option value="Skiing">Skiing</option>
+                <option value="Football" {% if activity == "Football" %}selected{% endif %}>Football</option>
+                <option value="Running" {% if activity == "Running" %}selected{% endif %}>Running</option>
+                <option value="Golf" {% if activity == "Golf" %}selected{% endif %}>Golf</option>
+                <option value="Basketball" {% if activity == "Basketball" %}selected{% endif %}>Basketball</option>
+                <option value="Skiing" {% if activity == "Skiing" %}selected{% endif %}>Skiing</option>
             </select>
 
             <button>
