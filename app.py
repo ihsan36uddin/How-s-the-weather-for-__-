@@ -31,30 +31,29 @@ def home():
 
     if request.method == "POST":
         chosen_loc = request.form.get("location")
+        chosen_activity = request.form.get("activity")
         if not chosen_loc.strip():
             input_error = True
-        chosen_activity = request.form.get("activity")
+        else:
+            try:
+                latitude, longitude = geocoding(chosen_loc)
+                weather = get_weather(latitude, longitude)
 
-        try:
-            latitude, longitude = geocoding(chosen_loc)
-            weather = get_weather(latitude, longitude)
+                if chosen_activity in sports:
+                    score = sports[chosen_activity](
+                    weather["rain"],
+                    weather["humidity"],
+                    weather["snow"],
+                    weather["temperature"],
+                    weather["wind_speed"],                    
+                    )
+                    verdict = get_verdict(score, chosen_activity)
 
-            if chosen_activity in sports:
-                score = sports[chosen_activity](
-                weather["rain"],
-                weather["humidity"],
-                weather["snow"],
-                weather["temperature"],
-                weather["wind_speed"],                    
-                )
+            except ValueError:
+                input_error = True 
 
-            verdict = get_verdict(score, chosen_activity)
-
-        except ValueError:
-            input_error = True 
-
-        except requests.exceptions.RequestException:
-            api_error = True
+            except requests.exceptions.RequestException:
+                api_error = True
 
 
     return render_template("index.html", score=score, 

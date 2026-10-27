@@ -32,7 +32,7 @@
 
         <form class="location-form" method="POST">
             <label for="city">City:</label>
-            <input type="text" id="city" value="{{location or ''}}" name="location" placeholder="Paris">
+            <input type="text" id="city" value="{{location or ''}}" name="location" placeholder="Paris" required>
 
             <select name="activity">
                 <option value="Football" {% if activity == "Football" %}selected{% endif %}>Football</option>
@@ -42,7 +42,7 @@
                 <option value="Skiing" {% if activity == "Skiing" %}selected{% endif %}>Skiing</option>
             </select>
 
-            <button>
+            <button type="submit">
                 <i class="fa-solid fa-magnifying-glass"></i>
             </button>
         </form>
@@ -58,35 +58,32 @@
                 <i class="fa-solid fa-droplet-slash"></i>
                 Unable to retrieve weather information. Please try again.
             </p>
-        {% endif %}
-            {% if score is not none %}
-                <h2>{{activity}} Suitability Score</h2>
-                <p class="score">{{score}}/100</p>
-                <hr>
-                <div class="weather-details">
-                    <div class="weather-item">
+        {% elif score is not none %}
+            <h2>{{activity}} Suitability Score</h2>
+            <p class="score">{{score}}/100</p>
+            <hr>
+            <div class="weather-details">
+                <div class="weather-item">
                     <i class="fa-solid fa-temperature-full"></i>
                     <p class="weather-label">Temperature</p>
-                    <p>{{weather["temperature"]}}°C</p>
-                    
-                    </div>
-                    <div class="weather-item">
+                <p>{{weather["temperature"]}}°C</p> 
+                </div>
+                <div class="weather-item">
                     <i class="fa-solid fa-wind"></i>
                     <p class="weather-label">Wind speed</p>
                     <p>{{weather["wind_speed"]}}mph</p>
-                    </div>
-                    <div class="weather-item">
+                </div>
+                <div class="weather-item">
                     <i class="fa-solid fa-droplet"></i>
                     <p class="weather-label">Rainfall</p>
                     <p>{{weather["rain"]}}mm</p>
-                    </div>
                 </div>
-
-                <div class="verdict">
+            </div>
+            <div class="verdict">
                 <p>{{verdict}}</p>
-                </div>
+            </div>
                 
-            {% endif %}
+        {% endif %}
         </div>
     </div>
     {% if score is not none or input_error or api_error %}

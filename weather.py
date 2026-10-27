@@ -21,7 +21,7 @@ def get_weather(latitude, longitude):
         "latitude": latitude,
         "longitude": longitude,
         "wind_speed_unit": "mph",
-        "current": "temperature_2m,relative_humidity_2m,is_day,rain,snowfall,wind_speed_10m,"
+        "current": "temperature_2m,relative_humidity_2m,is_day,rain,snowfall,wind_speed_10m"
     }
     weather_response = requests.get(url2, params=weather_params, timeout=10)
     weather_response.raise_for_status()
