@@ -33,7 +33,7 @@ body .project-name {
     background: rgba(255, 255, 255, 0.1);
     border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 20px;
-    padding: 30px;
+    padding: 20px;
     box-shadow: 0 8px 32px rgba(140, 13, 172, 0.3);
     backdrop-filter: blur(3px);
     
@@ -82,6 +82,7 @@ body .project-name {
     justify-content: center;
     align-items: center;
     gap: 10px;
+    margin-bottom: 10px;
 
 }
 
@@ -133,12 +134,25 @@ body .project-name {
     display: flex;
     justify-content: center;
     align-items: center;
+    font-weight: 600;
+}
+
+.results-card h2 {
+    font-size: 24px;
 }
 
 .results-card .score{
     font-family: 'Inter', sans-serif;
-    font-size: 28px;
-    font-weight: 500
+    font-size: 32px;
+    font-weight: 600;
+    margin-top: -5px;
+}
+
+.results-card hr {
+    border: none;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.454);
+    margin: 20px 0;
 }
 
 .results-card .verdict{
@@ -171,6 +185,10 @@ body .project-name {
     font-family: 'Inter', sans-serif;
     font-size: 12px;
 
+}
+
+.weather-item i {
+    font-size: 18px;
 }
 
 .weather-item {

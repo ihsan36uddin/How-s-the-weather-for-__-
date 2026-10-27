@@ -21,7 +21,7 @@ def get_weather(latitude, longitude):
         "latitude": latitude,
         "longitude": longitude,
         "wind_speed_unit": "mph",
-        "current": "temperature_2m,relative_humidity_2m,is_day,rain,snowfall,wind_speed_10m"
+        "current": "temperature_2m,relative_humidity_2m,rain,snowfall,wind_speed_10m"
     }
     weather_response = requests.get(url2, params=weather_params, timeout=10)
     weather_response.raise_for_status()
@@ -32,7 +32,6 @@ def get_weather(latitude, longitude):
     snow = weather_data["current"]["snowfall"]
     temperature = weather_data["current"]["temperature_2m"]
     wind_speed = weather_data["current"]["wind_speed_10m"]
-    is_day = weather_data["current"]["is_day"]
 
     return{
         "rain": rain,
@@ -40,12 +39,10 @@ def get_weather(latitude, longitude):
         "snow": snow,
         "temperature": temperature,
         "wind_speed": wind_speed,
-        "is_day": is_day
     }
 
 
 def calculate_football_score(rain, humidity, snow, temp, speed):
-
     # Rainfall (maximum 25 points)
     if rain == 0:
         rain_score = 25
@@ -323,31 +320,21 @@ def get_verdict(score, sport):
     elif 80 <= score < 90:
         verdict = f"Great conditions for {sport}!"
     elif 70 <= score < 80: 
-        verdict = f"Good conditions for {sport}"
+        verdict = f"Good conditions for {sport}."
     elif 60 <= score < 70:
-        verdict = f"Tolerable conditions for {sport}"
+        verdict = f"Tolerable conditions for {sport}."
     elif 50 <= score < 60:
-        verdict = f"Not the greatest conditions for {sport}"
+        verdict = f"Not the greatest conditions for {sport}."
     elif 40 <= score < 50:
-        verdict = f"Bad conditions for {sport}"
+        verdict = f"Bad conditions for {sport}."
     else:
-        verdict = f"Terrible conditions for {sport}"
+        verdict = f"Terrible conditions for {sport}."
     return verdict 
 
 
-
-
-# 'current_units': {'cloud_cover': '%',
-#                    'interval': 'seconds',
-#                    'is_day': '',
+# 'current_units'
 #                    'precipitation': 'mm',
-#                    'pressure_msl': 'hPa',
 #                    'rain': 'mm',
-#                    'relative_humidity_2m': '%',
-#                    'showers': 'mm',
 #                    'snowfall': 'cm',
 #                    'temperature_2m': '°C',
-#                    'time': 'iso8601',
-#                    'weather_code': 'wmo code',
-#                    'wind_gusts_10m': 'mp/h',
 #                    'wind_speed_10m': 'mp/h'},
