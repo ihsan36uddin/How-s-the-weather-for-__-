@@ -4,6 +4,9 @@
 
 A minimalist web app that rates the suitability of current weather conditions of different activities for a desired city.
 
+The application is available online: [Live Demo](https://hows-the-weather-for.onrender.com/).
+
+Alternatively, clone the repository, install the dependencies using pip install -r requirements.txt, and run it locally with `python3 app.py`.
 ## Demo
 ![Weather App Demo](static/images/demo.gif)
 
