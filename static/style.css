@@ -204,12 +204,12 @@ body .project-name {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 12px;
+    gap: 16px;
     line-height: 1.2;
 }
 
 .word-window {
-    transform: translateY(6.5px);
+    transform: translateY(8px);
     display: inline-block;
     height: 1.2em;
     width: 195px;

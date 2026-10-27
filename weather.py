@@ -317,10 +317,11 @@ def calculate_skiing_score(rain, humidity, snow, temp, speed):
     return rain_score + humidity_score + snow_score + temp_score + wind_score
 
 def get_verdict(score, sport):
+    sport = sport.lower()
     if 90 <= score <= 100:
-        verdict = f"Excellent conditions for {sport}"
+        verdict = f"Excellent conditions for {sport}!"
     elif 80 <= score < 90:
-        verdict = f"Great conditions for {sport}"
+        verdict = f"Great conditions for {sport}!"
     elif 70 <= score < 80: 
         verdict = f"Good conditions for {sport}"
     elif 60 <= score < 70:
