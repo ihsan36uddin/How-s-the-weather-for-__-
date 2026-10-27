@@ -1,4 +1,4 @@
-# How-s-the-weather-for-__-
+# Hows-the-weather-for-__-
 
 ### ℹ️ Description:
 
