@@ -4,7 +4,7 @@
 
 A minimalist web app that rates the suitability of current weather conditions of different activities for a desired city.
 
-### Features:
+## Features:
  - Search for cities worldwide using Open-Meteo's Geocoding API.
  - Enter an activity from football, running, golf, basketball and skiing.
  - Retrieve live weather information using Open-Meteo's Forecast API.
@@ -25,7 +25,7 @@ I thought it would be interesting to create an algorithm that takes the weather 
 Furthermore, I built this project to develop my Python skills and gain practical experience working with APIs, backend development and web applications.
 
 
-### How It Works:
+## How It Works:
 The user enters a city and selects an activity.
 
 Flask receives the submitted form data.
@@ -38,7 +38,7 @@ The appropriate scoring function evaluates temperature, humidity, rainfall, snow
 
 The application returns a suitability score between 0 and 100 and displays a verdict.
 
-### Technologies used:
+## Technologies used:
 - Python: backend logic and suitability algorithms
 - HTML & CSS: page structure, styling and animations
 - Open-Meteo API 
