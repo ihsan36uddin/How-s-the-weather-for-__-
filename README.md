@@ -4,6 +4,9 @@
 
 A minimalist web app that rates the suitability of current weather conditions of different activities for a desired city.
 
+## Demo
+![Weather App Demo](static/images/demo.gif)
+
 ## Features:
  - Search for cities worldwide using Open-Meteo's Geocoding API.
  - Enter an activity from football, running, golf, basketball and skiing.
